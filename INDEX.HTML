@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PROJETO FINAL - AULAS DE IA</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background-color: #ffffff;
+      color: #000000;
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background 0.3s, color 0.3s;
+    }
+    header {
+      padding: 24px 16px;
+      text-align: center;
+      border-bottom: 1px solid rgba(0,0,0,.1);
+      background-color: #ffffff;
+      color: #000000;
+      transition: background 0.3s, color 0.3s;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(1.25rem, 2.5vw + 1rem, 2.25rem);
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    main {
+      max-width: 960px;
+      padding: 24px 16px;
+      margin: 0 auto;
+    }
+
+    .img-text-container {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+    .img-text-container img {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      border: 6px solid transparent;
+      transition: transform 0.4s ease;
+    }
+    .img-text-container img:hover {
+      transform: scale(1.05);
+    }
+    .img-text-container .text {
+      flex: 1;
+    }
+
+    @keyframes borderRGB {
+      0%   { border-color: purple; }
+      25%  { border-color: yellow; }
+      50%  { border-color: lime; }
+      75%  { border-color: blue; }
+      100% { border-color: purple; }
+    }
+    .rgb-border {
+      animation: borderRGB 3s linear infinite;
+    }
+
+    footer {
+      max-width: 960px;
+      margin: 24px auto;
+      padding: 12px 16px;
+      text-align: center;
+      border-top: 1px solid rgba(0,0,0,.1);
+      color: #000000;
+      font-weight: bold;
+      background-color: #ffffff;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    /* Botão RGB */
+    .rgb-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 70px;
+      height: 70px;
+      border: 4px solid #fff;
+      border-radius: 50%;
+      background: url('luz.png') center/cover no-repeat;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      z-index: 1000;
+    }
+
+    /* Botão Lua */
+    .dark-button {
+      position: fixed;
+      bottom: 110px;
+      right: 20px;
+      width: 70px;
+      height: 70px;
+      border: 4px solid #fff;
+      border-radius: 50%;
+      background: url('lua.png') center/cover no-repeat;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      z-index: 1000;
+    }
+
+    /* Botão Sair */
+    .exit-button {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      width: 70px;
+      height: 70px;
+      background: #fff;
+      border: 3px solid #000;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      z-index: 1000;
+    }
+    .exit-button span {
+      display: block;
+      width: 40px;
+      height: 5px;
+      background: #000;
+      border-radius: 2px;
+    }
+
+    /* Dark mode */
+    .dark-mode {
+      background-color: #000000;
+      color: #ffffff;
+    }
+    .dark-mode header {
+      background-color: #000000;
+      color: #ffffff;
+    }
+    .dark-mode footer {
+      background-color: #000000;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>PROJETO FINAL - AULAS DE IA</h1>
+  </header>
+
+  <main>
+    <div class="img-text-container">
+      <img src="img1.jpg" alt="Imagem 1">
+      <div class="text">
+        <p>Minere em cavernas e colete minérios para evoluir ao decorrer do jogo.</p>
+      </div>
+    </div>
+
+    <div class="img-text-container">
+      <img src="img2.jpg" alt="Imagem 2">
+      <div class="text">
+        <p>Os diamantes são essenciais para sua proteção no jogo, podendo ser usados como armadura e ferramenta de ataque.</p>
+      </div>
+    </div>
+
+    <div class="img-text-container">
+      <img src="img3.jpg" alt="Imagem 3">
+      <div class="text">
+        <p>A noite, monstros irão aparecer para tentar te eliminar, derrote-os com espadas, machados ou arco e flecha.</p>
+      </div>
+    </div>
+
+    <div class="img-text-container">
+      <img src="img4.jpg" alt="Imagem 4">
+      <div class="text">
+        <p>Colete madeira de árvores e construa sua casa para morar, guardar os seus itens e dormir.</p>
+      </div>
+    </div>
+
+    <!-- Texto explicativo -->
+    <section class="minecraft-info">
+      <h2>Sobre o Jogo</h2>
+      <p>
+        O jogo <strong>Minecraft</strong> é um jogo de sobrevivência, onde podemos desde matar animais para alimentação até derrotar um dragão em outra dimensão!!!  
+        No jogo existem <strong>3 dimensões</strong>: o mundo normal, o Nether e o End.
+      </p>
+      <p>
+        <strong>O mundo normal</strong> consiste em nada demais, apenas um mundo onde o jogador pode construir casas, matar animais em busca de alimentos, minerar entre outras coisas para a sobrevivência.
+      </p>
+      <p>
+        <strong>No Nether</strong>, tudo é fogo. Nessa dimensão não existe dia nem noite, o céu é sempre vermelho.  
+        Lá existem fantasmas que atacam com bolas de fogo, porcos zumbis, esqueletos pretos que envenenam o jogador, porcos humanoides que fazem trocas por ouro, monstros de fogo que deixam labaredas ao cair, e também os Endermen — criaturas que se teletransportam, movem blocos e atacam se você olhar nos olhos deles.  
+        Ao morrerem, eles geralmente dropam um <em>olho</em>, que ao ser arremessado, teletransporta o jogador para o local onde cair.
+      </p>
+      <p>
+        <strong>O End</strong> é a dimensão onde o jogador pode zerar o jogo derrotando o dragão.  
+        Lá existem vários Endermen. Ao matar o dragão, ele deixa um <em>ovo de dragão</em> que não tem utilidade, mas é raro.  
+        Abaixo do ovo surge um portal, e ao entrar nele, aparecem os créditos.  
+        Mesmo após isso, o jogador ainda pode continuar jogando normalmente.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    SITE CRIADO POR RAFAEL CORBO NA AULA DE IA
+  </footer>
+
+  <!-- Botão Sair -->
+  <button class="exit-button" id="exitBtn">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- Botão Dark Mode -->
+  <button class="dark-button" id="darkToggle"></button>
+
+  <!-- Botão RGB -->
+  <button class="rgb-button" id="rgbToggle"></button>
+
+  <script>
+    const button = document.getElementById("rgbToggle");
+    const darkButton = document.getElementById("darkToggle");
+    const exitButton = document.getElementById("exitBtn");
+    const images = document.querySelectorAll("main img");
+    const body = document.body;
+
+    // Botão RGB
+    let active = false;
+    button.addEventListener("click", () => {
+      active = !active;
+      images.forEach(img => {
+        if (active) {
+          img.classList.add("rgb-border");
+        } else {
+          img.classList.remove("rgb-border");
+        }
+      });
+    });
+
+    // Dark mode toggle
+    let darkMode = false;
+    darkButton.addEventListener("click", () => {
+      darkMode = !darkMode;
+      if (darkMode) {
+        body.classList.add("dark-mode");
+      } else {
+        body.classList.remove("dark-mode");
+      }
+    });
+
+    // Botão Sair
+    exitButton.addEventListener("click", () => {
+      window.location.href = "https://www.google.com";
+    });
+  </script>
+</body>
+</html>
